@@ -38,6 +38,27 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
+/* شاشة الانطلاق */
+#splash-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 9999; display: flex; justify-content: center; align-items: center;
+    background: var(--bg-color);
+}
+.splash-box { text-align: center; animation: pulse 1s infinite alternate; }
+.splash-anim {
+    width: 60px; height: 60px; border: 5px solid rgba(255,255,255,0.3);
+    border-top-color: var(--primary); border-radius: 50%;
+    animation: spin 1s linear infinite; margin: 0 auto 20px;
+}
+#skip-btn {
+    position: absolute; top: 20px; left: 20px;
+    background: rgba(255,255,255,0.2); padding: 8px 20px;
+    border-radius: 10px; color: white; border: none; z-index: 10000;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.05); } }
+
 /* شاشات الدخول والتحميل */
 #login-screen, #loader {
     width: 90%; max-width: 350px;
@@ -95,6 +116,12 @@ button {
 
 .card { padding: 15px; border-radius: 15px; margin-bottom: 15px; }
 
+/* نبذة المدرس */
+.teacher-header { display: flex; align-items: center; margin-bottom: 10px; }
+.teacher-icon { font-size: 40px; color: var(--primary); margin-left: 15px; }
+.subject { color: var(--primary); font-weight: bold; margin: 0; }
+.bio { font-size: 14px; line-height: 1.6; opacity: 0.9; }
+
 /* شريط التقدم */
 .progress-bar-bg {
     background: rgba(255,255,255,0.2); height: 10px; border-radius: 5px; margin: 10px 0; overflow: hidden;
@@ -104,12 +131,14 @@ button {
 }
 
 /* الكورسات */
-.course-card { display: flex; flex-direction: column; }
+.course-card { display: flex; flex-direction: column; overflow: hidden; }
+.course-thumbnail { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
 .course-header { display: flex; align-items: center; cursor: pointer; }
 .course-icon { font-size: 30px; margin-left: 15px; color: var(--primary); }
 .course-actions { margin-top: 10px; border-top: 1px solid var(--glass-border); padding-top: 10px; }
 .locked { opacity: 0.6; pointer-events: none; }
 .locked .course-icon { color: #ccc; }
+.locked .course-thumbnail { filter: grayscale(100%); }
 
 .btn-small {
     background: rgba(255,255,255,0.2); color: white; padding: 5px 15px; border-radius: 5px; transition: 0.3s;
