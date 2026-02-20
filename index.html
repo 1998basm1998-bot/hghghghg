@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الدورات الاحترافية</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="toast-container"></div>
+
+    <div id="loader" class="glass-panel" style="display: none;">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>جاري التحقق من البيانات...</p>
+    </div>
+
+    <div id="login-screen" class="glass-panel">
+        <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h2>دخول المنصة</h2>
+        <input type="password" id="password-input" placeholder="أدخل رمز المرور...">
+        <button onclick="handleLogin()">تسجيل الدخول</button>
+    </div>
+
+    <div id="main-app" style="display: none;">
+        
+        <header class="app-header glass-panel">
+            <h3>منصة المدرس</h3>
+            <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+        </header>
+
+        <div class="content-area">
+            
+            <div id="home" class="tab-content active">
+                <h2>مرحباً، طالب تجريبي!</h2>
+                
+                <div class="card glass-panel progress-card">
+                    <h3>نسبة إنجازك الكلية</h3>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 45%;"></div>
+                    </div>
+                    <p>45% مكتمل</p>
+                </div>
+
+                <div class="card glass-panel">
+                    <h3><i class="fas fa-bullhorn text-warning"></i> إعلان هام</h3>
+                    <p>تم رفع ملزمة الفصل الثاني بصيغة PDF. يرجى تحميلها من قسم الدروس.</p>
+                </div>
+            </div>
+
+            <div id="courses" class="tab-content">
+                <h2>الدروس المتاحة</h2>
+                
+                <div class="card glass-panel course-card">
+                    <div class="course-header" onclick="openVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'المحاضرة الأولى: الأساسيات')">
+                        <i class="fas fa-play-circle course-icon"></i>
+                        <div>
+                            <h3>الفصل الأول - الأساسيات</h3>
+                            <p>المدة: 45 دقيقة</p>
+                        </div>
+                    </div>
+                    <div class="course-actions">
+                        <button class="btn-small" onclick="downloadFile()"><i class="fas fa-file-pdf"></i> الملزمة</button>
+                    </div>
+                </div>
+
+                <div class="card glass-panel course-card locked">
+                    <div class="course-header">
+                        <i class="fas fa-lock course-icon"></i>
+                        <div>
+                            <h3>الفصل الثاني - المتقدم</h3>
+                            <p>يفتح بعد إتمام الفصل الأول</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="profile" class="tab-content">
+                <h2>إعدادات الحساب</h2>
+                <div class="card glass-panel text-center">
+                    <div class="avatar"><i class="fas fa-user-circle"></i></div>
+                    <h3>طالب تجريبي</h3>
+                    <p class="copy-id" onclick="copyId('10293')">كود الطالب: 10293 <i class="fas fa-copy"></i></p>
+                </div>
+                <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+            </div>
+        </div>
+
+        <a href="#" class="fab glass-panel" onclick="showToast('سيتم تحويلك للواتساب', 'info')">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <nav class="bottom-nav glass-panel">
+            <button class="nav-btn active" onclick="switchTab('home', this)">
+                <i class="fas fa-home"></i><span>الرئيسية</span>
+            </button>
+            <button class="nav-btn" onclick="switchTab('courses', this)">
+                <i class="fas fa-book-open"></i><span>الدروس</span>
+            </button>
+            <button class="nav-btn" onclick="switchTab('profile', this)">
+                <i class="fas fa-user-graduate"></i><span>حسابي</span>
+            </button>
+        </nav>
+    </div>
+
+    <div id="video-modal" class="glass-panel" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="video-title">عنوان الفيديو</h3>
+                <button onclick="closeVideo()"><i class="fas fa-times"></i></button>
+            </div>
+            <video id="course-video" controls>
+                <source src="" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
