@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة الدورات الاحترافية</title>
+    <title>منصة مركز الأوائل</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+    <div id="splash-screen" class="glass-panel">
+        <button id="skip-btn" onclick="skipSplash()">تخطي</button>
+        <div class="splash-box">
+            <div class="splash-anim"></div>
+            <h1>منصة مركز الأوائل</h1>
+        </div>
+    </div>
 
     <div id="toast-container"></div>
 
@@ -26,15 +34,25 @@
     <div id="main-app" style="display: none;">
         
         <header class="app-header glass-panel">
-            <h3>منصة المدرس</h3>
+            <h3>منصة مركز الأوائل</h3>
             <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
         </header>
 
         <div class="content-area">
             
             <div id="home" class="tab-content active">
-                <h2>مرحباً، طالب تجريبي!</h2>
                 
+                <div class="card glass-panel teacher-profile">
+                    <div class="teacher-header">
+                        <i class="fas fa-user-tie teacher-icon"></i>
+                        <div>
+                            <h3>الأستاذ حيدر كاظم عبد</h3>
+                            <p class="subject">مدرس مادة الكيمياء</p>
+                        </div>
+                    </div>
+                    <p class="bio">حاصل على شهادة الماجستير. أستاذ متخصص يمتلك خبرة واسعة في تبسيط المناهج العلمية وتأهيل الطلاب للتفوق والنجاح في مادة الكيمياء.</p>
+                </div>
+
                 <div class="card glass-panel progress-card">
                     <h3>نسبة إنجازك الكلية</h3>
                     <div class="progress-bar-bg">
@@ -53,6 +71,7 @@
                 <h2>الدروس المتاحة</h2>
                 
                 <div class="card glass-panel course-card">
+                    <img src="https://via.placeholder.com/400x200/00d2ff/ffffff?text=صورة+معاينة+الكيمياء" alt="معاينة الفيديو" class="course-thumbnail">
                     <div class="course-header" onclick="openVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'المحاضرة الأولى: الأساسيات')">
                         <i class="fas fa-play-circle course-icon"></i>
                         <div>
@@ -66,6 +85,7 @@
                 </div>
 
                 <div class="card glass-panel course-card locked">
+                    <img src="https://via.placeholder.com/400x200/333333/ffffff?text=الفصل+الثاني+(مقفل)" alt="معاينة الفيديو" class="course-thumbnail">
                     <div class="course-header">
                         <i class="fas fa-lock course-icon"></i>
                         <div>
