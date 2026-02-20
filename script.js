@@ -1,3 +1,15 @@
+// إدارة شاشة الانطلاق
+function skipSplash() {
+    document.getElementById('splash-screen').style.display = 'none';
+}
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) splash.style.display = 'none';
+    }, 2000);
+});
+
 // دالة محاكاة الدخول مع التحميل
 function handleLogin() {
     const pass = document.getElementById('password-input').value;
@@ -6,7 +18,6 @@ function handleLogin() {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('loader').style.display = 'flex';
         
-        // محاكاة جلب البيانات من السيرفر (تأخير 1.5 ثانية)
         setTimeout(() => {
             document.getElementById('loader').style.display = 'none';
             document.getElementById('main-app').style.display = 'flex';
@@ -78,7 +89,6 @@ function copyId(id) {
 // تحميل ملف
 function downloadFile() {
     showToast('جاري بدء التحميل...', 'info');
-    // هنا يتم وضع رابط التحميل الفعلي
 }
 
 // تسجيل الخروج
